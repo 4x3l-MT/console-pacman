@@ -10,10 +10,11 @@ This project simulates a console version of Pacman where the player navigates a 
 
 ## Features
 
-- Modular Architecture: Separate header and implementation files (mapa.h, mapa.c, main.c) for clean code organization.
+- Modular Architecture: Separate header and implementation files for clean code organization.
 - Randomized Level Loading: Automatically selects one of three predefined 15x20 mazes at the start of each game session.
-- Valid Movement System: Prevents Pacman and ghosts from passing through walls (#) using boundary and collision checking functions.
-- Cross-Platform Clear Screen: Supports dynamic screen clearing for both Windows (cls) and Linux/macOS (clear).
+- Ghost AI Personalities: Blinky (Hunter), Pinky (Ambush), Inky (Unpredictable), and Clyde (Cowardly).
+- Valid Movement System: Prevents Pacman and ghosts from passing through walls (#).
+- Cross-Platform Clear Screen: Supports dynamic screen clearing for Windows (cls) and Linux/macOS (clear).
 
 ---
 
@@ -21,8 +22,10 @@ This project simulates a console version of Pacman where the player navigates a 
 
 ```text
 ├── main.c        # Main entry point, game loop, and interactive menu
-├── mapa.h        # Header file containing constants and map function prototypes
-├── mapa.c        # Implementation of predefined mazes and map logic
+├── mapa.h        # Header file for map loading, display, and path validation
+├── mapa.c        # Predefined mazes and map logic
+├── fantasma.h    # Ghost structures, types, and function prototypes
+├── fantasma.c    # Ghost initialization and AI movement logic
 ├── .gitignore    # Excludes compiled executables and object files
 └── README.md     # Project documentation
 ```
@@ -43,16 +46,12 @@ This project simulates a console version of Pacman where the player navigates a 
 
 ## Building and Running
 
-### Prerequisites
-- GCC compiler (or any standard C/C++ compiler)
-- Git (optional)
-
 ### Compilation
 
 Open your terminal or command prompt in the project root directory and run:
 
 ```bash
-gcc main.c mapa.c -o pacman.exe
+gcc main.c mapa.c fantasma.c -o pacman.exe
 ```
 
 ### Execution
@@ -84,8 +83,8 @@ pacman.exe
 - [x] Predefined map layouts loaded at runtime.
 - [x] Console clearing between frames.
 - [x] Input system with navigation menus.
-- [ ] Non-blocking real-time keyboard input.
-- [ ] Ghost movement logic (Random / Simple AI).
+- [x] Ghost movement logic (4 classic ghost behaviors).
+- [ ] Pacman movement system (W/A/S/D).
 - [ ] Win/Loss game end conditions.
 
 ---
